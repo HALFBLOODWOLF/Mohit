@@ -1,42 +1,44 @@
+//Week 9 question 1: Floyd Warshal
 #include<bits/stdc++.h>
 using namespace std;
 int main()
 {
-	cout<<"USE -1 in place of INF\n";
-	int V,t;
+	int Vertex,t=0;
 	string temp;
-	cin>>V;
-	vector<vector<int>> answer(V);
-	for(int i = 0;i<V;i++)
+	cin>>Vertex;
+	vector<int> ans(Vertex);
+	for(int i = 0;i<Vertex;i++)
 	{
-		for(int j = 0;j<V;j++)
+		for(int j = 0;j<Vertex;j++)
 		{
 			cin>>t;
-			answer[i].push_back(t);
-			if(answer[i][j] == -1)
+			ans[i].push_back(t);
+			if(ans[i][j] == -1)
 			{
 				
-				answer[i][j] = INT_MAX;
+				ans[i][j] = INT_MAX;
 			}
 		}
 	}
-	for(int k = 0; k<V;k++)
+	for(int k = 0; k<Vertex;k++)
 	{
-		for(int i =0;i<V; i++)
+		for(int i =0;i<Vertex; i++)
 		{
-			for(int j = 0;j<V;j++)
+			for(int j = 0;j<Vertex;j++)
 			{
-				if(answer[i][k]!=INT_MAX && answer[k][j]!= INT_MAX)
-				answer[i][j] = min(answer[i][j], answer[i][k] + answer[k][j]);
+				if(ans[i][k]!=INT_MAX && ans[k][j]!= INT_MAX)
+				{
+				ans[i][j] = min(ans[i][j], (ans[i][k] + ans[k][j]));
+			    }
 			}
 		}
 	}
-	for(int i = 0;i<V;i++)
+	for(int i = 0;i<Vertex;i++)
 	{
-		for(int j = 0;j<V;j++)
+		for(int j = 0;j<Vertex;j++)
 		{
 			if(answer[i][j] == INT_MAX)
-				cout<<"inf ";
+				cout<<"OO ";
 			else
 				cout<<answer[i][j]<<" ";
 		}
